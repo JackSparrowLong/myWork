@@ -16,21 +16,21 @@ import java.util.UUID;
 public class RabbitMQServiceImpl implements IRabbitMQService {
 
     private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-    @Resource
-    private RabbitTemplate rabbitTemplate;
+//
+//    @Resource
+//    private RabbitTemplate rabbitTemplate;
 
 
     @Override
     public String sendMsg(String msg) throws Exception {
         try {
-            String msgId = UUID.randomUUID().toString().replace("-", "").substring(0, 32);
-            String sendTime = sdf.format(new Date());
-            Map<String, Object> map = new HashMap<>();
-            map.put("msgId", msgId);
-            map.put("sendTime", sendTime);
-            map.put("msg", msg);
-            rabbitTemplate.convertAndSend(RabbitMQConfig.RABBITMQ_DEMO_DIRECT_EXCHANGE, RabbitMQConfig.RABBITMQ_DEMO_DIRECT_ROUTING, map);
+//            String msgId = UUID.randomUUID().toString().replace("-", "").substring(0, 32);
+//            String sendTime = sdf.format(new Date());
+//            Map<String, Object> map = new HashMap<>();
+//            map.put("msgId", msgId);
+//            map.put("sendTime", sendTime);
+//            map.put("msg", msg);
+//            rabbitTemplate.convertAndSend(RabbitMQConfig.RABBITMQ_DEMO_DIRECT_EXCHANGE, RabbitMQConfig.RABBITMQ_DEMO_DIRECT_ROUTING, map);
             return "ok";
         } catch (AmqpException e) {
             e.printStackTrace();
