@@ -6,6 +6,7 @@ import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -15,8 +16,13 @@ import javax.annotation.Resource;
 @Component
 public class FanoutRabbitConfig implements BeanPostProcessor {
 
+
+    private static RabbitAdmin rabbitAdmin;
+
     @Resource
-    private RabbitAdmin rabbitAdmin;
+    public void setRabbitAdmin(RabbitAdmin rabbitAdmin){
+        FanoutRabbitConfig.rabbitAdmin = rabbitAdmin;
+    }
 
 
     public Queue fanoutExchangeQueueA() {

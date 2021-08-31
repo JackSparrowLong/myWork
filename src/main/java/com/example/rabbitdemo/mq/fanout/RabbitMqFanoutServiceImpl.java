@@ -17,8 +17,13 @@ public class RabbitMqFanoutServiceImpl implements IRabbitMqFanoutService{
 
     private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+
+    private static RabbitTemplate rabbitTemplate;
+
     @Resource
-    private RabbitTemplate rabbitTemplate;
+    public void setRabbitTemplate(RabbitTemplate rabbitTemplate){
+        RabbitMqFanoutServiceImpl.rabbitTemplate =rabbitTemplate;
+    }
 
     @Override
     public String sendMsgByFanoutExchange(String msg) throws Exception {
